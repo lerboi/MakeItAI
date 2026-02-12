@@ -79,8 +79,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
             >
-              Intelligent AI Agents{" "}
-              <span className="text-gradient">That Never Forget</span>
+              The Perfect AI Solution{" "}
+              <span className="text-gradient">Tailored for Your Industry</span>
             </motion.h1>
 
             <motion.p
@@ -89,9 +89,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
             >
-              Build AI systems with specialized memory architecture. Our agents remember
-              context, learn from interactions, and deliver intelligent responses that
-              evolve with your business.
+              We craft bespoke AI solutions designed to address your unique challenges.
+              From healthcare to finance, retail to manufacturing—our custom-built systems
+              integrate seamlessly and deliver measurable results.
             </motion.p>
 
             <motion.div

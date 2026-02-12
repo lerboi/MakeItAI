@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -37,13 +38,15 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center">
-            <span className="text-[#050505] font-bold text-sm">M</span>
-          </div>
-          <span className="text-xl font-semibold text-white group-hover:text-[#00F0FF] transition-colors">
-            MakeItAI
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/media/Logo.png"
+            alt="MakeItAI"
+            width={180}
+            height={40}
+            className="h-15 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

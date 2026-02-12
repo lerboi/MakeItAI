@@ -20,13 +20,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "MakeItAI | Intelligent AI Agents That Never Forget",
-  description: "Enterprise AI solutions with specialized memory architecture. Long-memory chatbots, autonomous agentic workflows, and data-to-intelligence pipelines.",
-  keywords: ["AI agents", "machine learning", "chatbots", "automation", "enterprise AI", "vector embeddings"],
+  title: "MakeItAI | Custom AI Solutions Tailored for Every Industry",
+  description: "We craft bespoke AI solutions designed for your unique industry challenges. From healthcare to finance, retail to manufacturing—custom-built systems that deliver results.",
+  keywords: ["AI solutions", "custom AI", "industry AI", "enterprise AI", "AI consulting", "machine learning", "automation"],
   authors: [{ name: "MakeItAI" }],
   openGraph: {
-    title: "MakeItAI | Intelligent AI Agents That Never Forget",
-    description: "Enterprise AI solutions with specialized memory architecture.",
+    title: "MakeItAI | Custom AI Solutions Tailored for Every Industry",
+    description: "Bespoke AI solutions designed for your unique industry challenges.",
     type: "website",
   },
 };

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   solutions: [
@@ -19,14 +20,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center">
-                <span className="text-[#050505] font-bold text-sm">M</span>
-              </div>
-              <span className="text-xl font-semibold text-white">MakeItAI</span>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/media/Logo.png"
+                alt="MakeItAI"
+                width={160}
+                height={48}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-[#64748B] max-w-md mb-4">
-              Intelligent AI agents with specialized memory architecture.
+              Creating the perfect AI solution tailored for every industry.
               Engineered for enterprise scale, built in Wyoming, deployed globally.
             </p>
             <p className="text-[#64748B] text-sm">

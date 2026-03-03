@@ -2,16 +2,19 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MessageSquare, Workflow, BarChart3, Zap, Shield, Globe } from "lucide-react";
+import { MessageSquare, Workflow, Bot, Zap, Shield, Globe } from "lucide-react";
 
 const services = [
   {
-    icon: MessageSquare,
-    title: "Long-Memory Chatbots",
+    icon: Bot,
+    title: "AI Business Automation",
     description:
-      "Customer service agents that remember every interaction. Context-aware responses that build on past conversations.",
+      "Replace manual processes with intelligent AI automation. From document processing to approval workflows—reduce overhead and scale operations.",
     span: "lg:col-span-2",
     featured: true,
+    accentColor: "#A855F7",
+    gradientFrom: "#A855F7",
+    gradientTo: "#7C3AED",
   },
   {
     icon: Workflow,
@@ -19,13 +22,17 @@ const services = [
     description:
       "Autonomous agents that execute complex multi-step processes with decision-making capabilities.",
     span: "lg:row-span-2",
+    featured: false,
+    accentColor: "#00F0FF",
   },
   {
-    icon: BarChart3,
-    title: "Data Pipelines",
+    icon: MessageSquare,
+    title: "Long-Memory Chatbots",
     description:
-      "Transform raw data into actionable intelligence with AI-powered ETL and analysis.",
+      "Customer service agents that remember every interaction. Context-aware responses that build on past conversations.",
     span: "",
+    featured: false,
+    accentColor: "#10B981",
   },
   {
     icon: Zap,
@@ -33,6 +40,8 @@ const services = [
     description:
       "Sub-50ms response times for latency-sensitive applications.",
     span: "",
+    featured: false,
+    accentColor: "#F59E0B",
   },
   {
     icon: Shield,
@@ -40,6 +49,8 @@ const services = [
     description:
       "SOC 2 compliant infrastructure with end-to-end encryption and audit logging.",
     span: "",
+    featured: false,
+    accentColor: "#F43F5E",
   },
   {
     icon: Globe,
@@ -47,6 +58,8 @@ const services = [
     description:
       "Edge-optimized infrastructure for worldwide low-latency access.",
     span: "",
+    featured: false,
+    accentColor: "#3B82F6",
   },
 ];
 
@@ -78,11 +91,14 @@ export default function BentoServices() {
               key={service.title}
               className={`
                 relative group p-6 rounded-2xl bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)]
-                transition-all duration-300 hover:border-[rgba(0,240,255,0.3)]
-                hover:shadow-[0_0_30px_rgba(0,240,255,0.1)]
+                transition-all duration-300
                 ${service.span}
-                ${service.featured ? "bg-gradient-to-br from-[#0F0F0F] to-[#0A1520]" : ""}
+                ${service.featured ? "bg-gradient-to-br from-[#0F0F0F] to-[#110A1F]" : ""}
               `}
+              style={{
+                "--hover-border": `rgba(${hexToRgb(service.accentColor)}, 0.3)`,
+                "--hover-glow": `rgba(${hexToRgb(service.accentColor)}, 0.08)`,
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -92,30 +108,48 @@ export default function BentoServices() {
                 damping: 15,
                 delay: index * 0.1,
               }}
+              whileHover={{
+                borderColor: `rgba(${hexToRgb(service.accentColor)}, 0.35)`,
+                boxShadow: `0 0 30px rgba(${hexToRgb(service.accentColor)}, 0.1)`,
+              }}
             >
               {/* Icon */}
               <div
-                className={`
-                  w-12 h-12 rounded-xl flex items-center justify-center mb-4
-                  ${service.featured
-                    ? "bg-gradient-to-br from-[#00F0FF] to-[#0080FF]"
-                    : "bg-[rgba(0,240,255,0.1)]"
-                  }
-                `}
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                style={
+                  service.featured
+                    ? {
+                        background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})`,
+                      }
+                    : {
+                        backgroundColor: `rgba(${hexToRgb(service.accentColor)}, 0.12)`,
+                      }
+                }
               >
                 <service.icon
-                  className={`w-6 h-6 ${service.featured ? "text-[#050505]" : "text-[#00F0FF]"}`}
+                  className="w-6 h-6"
+                  style={{
+                    color: service.featured ? "#050505" : service.accentColor,
+                  }}
                 />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#00F0FF] transition-colors">
+              <h3
+                className="text-xl font-semibold text-white mb-2 transition-colors duration-200 group-hover:text-opacity-90"
+                style={{ "--hover-color": service.accentColor }}
+              >
                 {service.title}
               </h3>
               <p className="text-[#94A3B8]">{service.description}</p>
 
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00F0FF] to-transparent opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none" />
+              {/* Hover Glow */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                style={{
+                  background: `linear-gradient(135deg, rgba(${hexToRgb(service.accentColor)}, 0.05), transparent)`,
+                }}
+              />
             </motion.div>
           ))}
         </div>
@@ -133,10 +167,17 @@ export default function BentoServices() {
             className="inline-flex items-center gap-2 text-[#00F0FF] hover:underline"
           >
             View all solutions
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="transition-transform">→</span>
           </Link>
         </motion.div>
       </div>
     </section>
   );
+}
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
+    : "0, 240, 255";
 }

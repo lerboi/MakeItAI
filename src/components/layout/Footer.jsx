@@ -31,7 +31,7 @@ export default function Footer() {
             </Link>
             <p className="text-[#64748B] max-w-md mb-4">
               Creating the perfect AI solution tailored for every industry.
-              Engineered for enterprise scale, built in Wyoming, deployed globally.
+              Engineered for enterprise scale, deployed globally.
             </p>
             <p className="text-[#64748B] text-sm">
               MakeItAI LLC - Wyoming, USA

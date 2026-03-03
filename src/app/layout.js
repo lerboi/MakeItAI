@@ -28,6 +28,7 @@ export const metadata = {
     title: "MakeItAI | Custom AI Solutions Tailored for Every Industry",
     description: "Bespoke AI solutions designed for your unique industry challenges.",
     type: "website",
+    images: [{ url: "/media/Logo.png" }],
   },
 };
 

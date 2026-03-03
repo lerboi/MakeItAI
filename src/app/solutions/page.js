@@ -4,48 +4,59 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Terminal, { CodeBlock } from "@/components/ui/Terminal";
 import Button from "@/components/ui/Button";
-import { MessageSquare, Workflow, BarChart3, ArrowRight, CheckCircle } from "lucide-react";
+import { MessageSquare, Workflow, Bot, ArrowRight, CheckCircle } from "lucide-react";
 
 const solutions = [
   {
-    id: "chatbots",
-    icon: MessageSquare,
-    title: "Long-Memory Chatbots",
-    subtitle: "Customer service agents that remember every interaction",
+    id: "automation",
+    icon: Bot,
+    iconGradient: "linear-gradient(135deg, #A855F7, #7C3AED)",
+    accentColor: "#A855F7",
+    title: "AI Business Automation",
+    subtitle: "Automate repetitive operations and scale with intelligent workflows",
     description:
-      "Build AI chatbots that maintain context across sessions, remember user preferences, and provide personalized responses based on conversation history. Perfect for customer support, sales, and internal knowledge bases.",
+      "Replace manual, time-consuming processes with intelligent AI automation. From document processing to approval workflows, our solutions reduce operational overhead and free your team to focus on high-value work.",
     features: [
-      "Persistent memory across sessions",
-      "User preference learning",
-      "Context-aware responses",
-      "Multi-turn conversation handling",
-      "Sentiment analysis integration",
-      "Handoff to human agents",
+      "Document and invoice processing",
+      "Automated approval workflows",
+      "CRM and ERP integration",
+      "Scheduled and event-driven triggers",
+      "Exception handling and escalation",
+      "Performance analytics dashboard",
     ],
-    code: `// Initialize memory-enabled chatbot
-const chatbot = new MakeItAI.Agent({
-  model: "gpt-4-turbo",
-  memory: {
-    type: "persistent",
-    storage: "vector-db",
-    retention: "unlimited"
-  }
+    code: `// Configure AI business automation
+const automation = new MakeItAI.Automation({
+  name: "invoice-processor",
+  trigger: { type: "email", filter: "invoices@company.com" },
+  pipeline: [
+    {
+      step: "extract",
+      model: "document-ai",
+      fields: ["vendor", "amount", "due_date"]
+    },
+    {
+      step: "validate",
+      rules: ["amount > 0", "vendor in approved_list"]
+    },
+    {
+      step: "route",
+      conditions: [
+        { if: "amount > 10000", to: "finance_approval" },
+        { else: "auto_approve" }
+      ]
+    }
+  ]
 });
 
-// User message with automatic context
-const response = await chatbot.chat({
-  userId: "user_123",
-  message: "What did we discuss last week?",
-  // Memory automatically retrieved
-});
-
-// Response includes historical context
-console.log(response.message);
-// "Last week we discussed your API integration..."`,
+// Process incoming document
+const result = await automation.process(document);
+console.log(result.status); // "approved" | "pending_review"`,
   },
   {
     id: "workflows",
     icon: Workflow,
+    iconGradient: "linear-gradient(135deg, #00F0FF, #0080FF)",
+    accentColor: "#00F0FF",
     title: "Autonomous Agentic Workflows",
     subtitle: "AI agents that execute complex multi-step processes",
     description:
@@ -88,45 +99,42 @@ const result = await workflow.run({
 });`,
   },
   {
-    id: "pipelines",
-    icon: BarChart3,
-    title: "Data-to-Intelligence Pipelines",
-    subtitle: "Transform raw data into actionable insights",
+    id: "chatbots",
+    icon: MessageSquare,
+    iconGradient: "linear-gradient(135deg, #10B981, #059669)",
+    accentColor: "#10B981",
+    title: "Long-Memory Chatbots",
+    subtitle: "Customer service agents that remember every interaction",
     description:
-      "Build end-to-end data pipelines that ingest, process, and analyze data using AI. From ETL operations to real-time analytics dashboards powered by natural language queries.",
+      "Build AI chatbots that maintain context across sessions, remember user preferences, and provide personalized responses based on conversation history. Perfect for customer support, sales, and internal knowledge bases.",
     features: [
-      "Automated data ingestion",
-      "AI-powered data cleaning",
-      "Natural language querying",
-      "Real-time stream processing",
-      "Custom ML model integration",
-      "Automated report generation",
+      "Persistent memory across sessions",
+      "User preference learning",
+      "Context-aware responses",
+      "Multi-turn conversation handling",
+      "Sentiment analysis integration",
+      "Handoff to human agents",
     ],
-    code: `// Create intelligent data pipeline
-const pipeline = new MakeItAI.Pipeline({
-  source: {
-    type: "multi-source",
-    connectors: ["postgres", "s3", "api"]
-  },
-  transforms: [
-    { type: "clean", rules: "auto-detect" },
-    { type: "enrich", model: "entity-extraction" },
-    { type: "embed", dimensions: 1536 }
-  ],
-  sink: {
-    type: "vector-db",
-    index: "knowledge-base"
+    code: `// Initialize memory-enabled chatbot
+const chatbot = new MakeItAI.Agent({
+  model: "gpt-4-turbo",
+  memory: {
+    type: "persistent",
+    storage: "vector-db",
+    retention: "unlimited"
   }
 });
 
-// Natural language query
-const insights = await pipeline.query(
-  "What are the top customer complaints this month?"
-);
+// User message with automatic context
+const response = await chatbot.chat({
+  userId: "user_123",
+  message: "What did we discuss last week?",
+  // Memory automatically retrieved
+});
 
-// AI-generated analysis
-console.log(insights.summary);
-console.log(insights.recommendations);`,
+// Response includes historical context
+console.log(response.message);
+// "Last week we discussed your API integration..."`,
   },
 ];
 
@@ -176,13 +184,18 @@ export default function SolutionsPage() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 100, damping: 15 }}
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center mb-6">
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: solution.iconGradient }}
+                >
                   <solution.icon className="w-7 h-7 text-[#050505]" />
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-2">
                   {solution.title}
                 </h2>
-                <p className="text-[#00F0FF] text-lg mb-4">{solution.subtitle}</p>
+                <p className="text-lg mb-4" style={{ color: solution.accentColor }}>
+                  {solution.subtitle}
+                </p>
                 <p className="text-[#94A3B8] text-lg mb-8">
                   {solution.description}
                 </p>
@@ -191,7 +204,10 @@ export default function SolutionsPage() {
                 <ul className="space-y-3 mb-8">
                   {solution.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#00F0FF] flex-shrink-0" />
+                      <CheckCircle
+                        className="w-5 h-5 flex-shrink-0"
+                        style={{ color: solution.accentColor }}
+                      />
                       <span className="text-[#94A3B8]">{feature}</span>
                     </li>
                   ))}

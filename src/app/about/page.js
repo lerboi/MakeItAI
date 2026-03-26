@@ -12,6 +12,7 @@ import {
   Zap,
   Globe,
   ArrowRight,
+  User,
 } from "lucide-react";
 
 const techStack = [
@@ -97,8 +98,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Founder Section */}
       <section className="py-24 bg-[#0A0A0A]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100, damping: 15 }}
+              className="flex justify-center"
+            >
+              <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center shadow-lg">
+                <User className="w-14 h-14 text-[#050505]" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                <span className="text-gradient">Founder</span>
+              </h2>
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Leroy Ng
+              </h3>
+              <p className="text-[#94A3B8] text-lg">
+                Educated in Singapore with a passion for AI since its early days,
+                Leroy founded MakeItAI to bridge the gap between cutting-edge AI
+                research and real-world business applications.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="mb-16"

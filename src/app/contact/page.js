@@ -8,7 +8,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@makeitai.com",
+    value: "leroy@makeitai.site",
     description: "We respond within 24 hours",
   },
   {

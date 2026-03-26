@@ -11,7 +11,8 @@ export default function Card({
   return (
     <motion.div
       className={`
-        relative bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6
+        relative bg-gradient-to-br from-[var(--surface)] to-[var(--surface-elevated)]
+        border border-[var(--border)] rounded-2xl p-7
         ${hover ? "card-hover" : ""}
         ${className}
       `}

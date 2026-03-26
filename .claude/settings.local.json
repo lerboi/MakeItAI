@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run lint:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(find /f/makeitai/src/components -type f \\\\\\(-name *.js -o -name *.jsx -o -name *.tsx -o -name *.ts -o -name *.css \\\\\\))"
     ]
   }
 }

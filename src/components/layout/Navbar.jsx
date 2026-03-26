@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -27,9 +27,9 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "glassmorphic shadow-lg"
+          ? "glassmorphic shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
       initial={{ y: -100 }}
@@ -50,15 +50,15 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[#94A3B8] hover:text-white transition-colors relative group"
+              className="px-4 py-2 text-[var(--text-secondary)] hover:text-white transition-colors duration-300 relative group rounded-lg text-sm font-medium"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00F0FF] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)] transition-all duration-300 group-hover:w-6 rounded-full" />
             </Link>
           ))}
         </div>
@@ -66,9 +66,10 @@ export default function Navbar() {
         {/* CTA Button - Desktop */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#00F0FF] text-[#050505] font-medium hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300"
+          className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[var(--accent)] to-[#0098CC] text-[var(--base)] font-semibold text-sm hover:shadow-[0_0_30px_rgba(0,212,255,0.35)] transition-all duration-300"
         >
           Get Started
+          <ArrowRight size={14} />
         </Link>
 
         {/* Mobile Menu Button */}
@@ -85,18 +86,18 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden glassmorphic border-t border-[rgba(255,255,255,0.08)]"
+            className="md:hidden glassmorphic border-t border-[var(--border)]"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.25 }}
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-6 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[#94A3B8] hover:text-white transition-colors py-2"
+                  className="text-[var(--text-secondary)] hover:text-white transition-colors py-3 px-3 rounded-lg hover:bg-[rgba(255,255,255,0.03)] font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -104,10 +105,11 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#00F0FF] text-[#050505] font-medium mt-2"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[var(--accent)] to-[#0098CC] text-[var(--base)] font-semibold mt-3"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started
+                <ArrowRight size={14} />
               </Link>
             </div>
           </motion.div>

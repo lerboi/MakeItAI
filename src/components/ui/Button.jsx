@@ -10,18 +10,18 @@ export default function Button({
   href,
   ...props
 }) {
-  const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 rounded-full";
+  const baseStyles = "inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full cursor-pointer";
 
   const variants = {
-    primary: "bg-[#00F0FF] text-[#050505] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] hover:scale-105",
-    secondary: "bg-transparent border border-[rgba(255,255,255,0.15)] text-white hover:border-[#00F0FF] hover:text-[#00F0FF]",
-    ghost: "bg-transparent text-[#94A3B8] hover:text-white hover:bg-[rgba(255,255,255,0.05)]",
+    primary: "bg-gradient-to-r from-[var(--accent)] to-[#0098CC] text-[var(--base)] hover:shadow-[0_0_40px_rgba(0,212,255,0.4)] hover:scale-105",
+    secondary: "bg-transparent border border-[rgba(255,255,255,0.1)] text-white hover:border-[var(--accent)] hover:text-[var(--accent)] hover:shadow-[0_0_20px_rgba(0,212,255,0.1)]",
+    ghost: "bg-transparent text-[var(--text-secondary)] hover:text-white hover:bg-[rgba(255,255,255,0.05)]",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-5 py-2.5 text-sm",
+    md: "px-7 py-3 text-base",
+    lg: "px-9 py-4 text-lg",
   };
 
   const Component = href ? motion.a : motion.button;

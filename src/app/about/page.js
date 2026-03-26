@@ -12,16 +12,15 @@ import {
   Zap,
   Globe,
   ArrowRight,
-  User,
 } from "lucide-react";
 
 const techStack = [
-  { icon: Brain, name: "LLM Integration", description: "OpenAI, Anthropic, custom models" },
-  { icon: Database, name: "Vector Databases", description: "Pinecone, Weaviate, Qdrant" },
-  { icon: Cloud, name: "Cloud Infrastructure", description: "AWS, GCP, Azure" },
-  { icon: Shield, name: "Security", description: "SOC 2, end-to-end encryption" },
-  { icon: Code, name: "Modern Stack", description: "TypeScript, Python, Next.js" },
-  { icon: Zap, name: "Edge Computing", description: "Global low-latency deployment" },
+  { icon: Brain, name: "LLM Integration", description: "OpenAI, Anthropic, custom models", color: "#7B61FF" },
+  { icon: Database, name: "Vector Databases", description: "Pinecone, Weaviate, Qdrant", color: "#00D4FF" },
+  { icon: Cloud, name: "Cloud Infrastructure", description: "AWS, GCP, Azure", color: "#3B82F6" },
+  { icon: Shield, name: "Security", description: "SOC 2, end-to-end encryption", color: "#F43F5E" },
+  { icon: Code, name: "Modern Stack", description: "TypeScript, Python, Next.js", color: "#10B981" },
+  { icon: Zap, name: "Edge Computing", description: "Global low-latency deployment", color: "#F59E0B" },
 ];
 
 const values = [
@@ -29,21 +28,25 @@ const values = [
     title: "Engineering Excellence",
     description:
       "We build AI systems with the same rigor as mission-critical infrastructure. Clean architecture, comprehensive testing, and documentation are non-negotiable.",
+    icon: Code,
   },
   {
     title: "Memory-First Design",
     description:
       "Unlike typical AI implementations, we design systems where context and memory are core architectural components, not afterthoughts.",
+    icon: Brain,
   },
   {
     title: "Enterprise Ready",
     description:
       "Security, scalability, and reliability are built in from day one. Our solutions are designed to handle enterprise-scale workloads.",
+    icon: Shield,
   },
   {
     title: "Transparent Partnership",
     description:
       "We believe in clear communication, honest timelines, and collaborative development. Your success is our success.",
+    icon: Globe,
   },
 ];
 
@@ -51,29 +54,33 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24">
       {/* Hero Section */}
-      <section className="py-16 relative">
-        <div className="absolute inset-0 mesh-gradient opacity-20" />
+      <section className="py-20 relative">
+        <div className="absolute inset-0 mesh-gradient opacity-30" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 100, damping: 15 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              <div className="badge mb-8">
+                <span>About MakeItAI</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 tracking-tight leading-[1.1]">
                 Building the Future of{" "}
                 <span className="text-gradient">Intelligent AI</span>
               </h1>
-              <p className="text-[#94A3B8] text-xl mb-6">
+              <p className="text-[var(--text-secondary)] text-xl mb-8 leading-relaxed">
                 MakeItAI is an AI engineering firm specializing in memory-enabled
                 agents and autonomous systems. We help enterprises deploy AI that
                 remembers, learns, and evolves.
               </p>
-              <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)]">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center">
-                  <span className="text-[#050505] font-bold text-xs">WY</span>
+              <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[rgba(255,255,255,0.02)] border border-[var(--border)]">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] flex items-center justify-center">
+                  <span className="text-[var(--base)] font-bold text-xs">WY</span>
                 </div>
-                <span className="text-[#94A3B8]">
+                <span className="text-[var(--text-secondary)] text-sm">
                   MakeItAI LLC — Wyoming, USA
                 </span>
               </div>
@@ -86,10 +93,15 @@ export default function AboutPage() {
               transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
             >
               <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00F0FF] via-[#0080FF] to-[#8000FF] opacity-20 blur-3xl rounded-full" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)] via-[#0080FF] to-[var(--accent-secondary)] opacity-15 blur-[80px] rounded-full" />
+                <motion.div
+                  className="absolute inset-8 border border-[rgba(0,212,255,0.1)] rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-48 h-48 rounded-3xl bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)] flex items-center justify-center shadow-2xl">
-                    <Globe className="w-24 h-24 text-[#00F0FF]" />
+                  <div className="w-48 h-48 rounded-3xl bg-gradient-to-br from-[var(--surface)] to-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+                    <Globe className="w-24 h-24 text-[var(--accent)] opacity-80" />
                   </div>
                 </div>
               </div>
@@ -99,45 +111,40 @@ export default function AboutPage() {
       </section>
 
       {/* Founder Section */}
-      <section className="py-24 bg-[#0A0A0A]">
+      <section className="py-24 bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 100, damping: 15 }}
-              className="flex justify-center"
-            >
-              <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-[#00F0FF] to-[#0080FF] flex items-center justify-center shadow-lg">
-                <User className="w-14 h-14 text-[#050505]" />
-              </div>
-            </motion.div>
-
+          <div className="max-w-3xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 15 }}
+              className="relative p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[var(--surface-elevated)] to-[rgba(0,212,255,0.03)] border border-[var(--border)] overflow-hidden"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">
-                <span className="text-gradient">Founder</span>
-              </h2>
-              <h3 className="text-xl font-semibold text-white mb-4">
-                Leroy Ng
-              </h3>
-              <p className="text-[#94A3B8] text-lg">
-                Educated in Singapore with a passion for AI since its early days,
-                Leroy founded MakeItAI to bridge the gap between cutting-edge AI
-                research and real-world business applications.
-              </p>
+              {/* Top accent */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-30" />
+
+              <div className="flex items-start gap-6">
+                <div className="hidden sm:block w-1 h-full min-h-[80px] rounded-full bg-gradient-to-b from-[var(--accent)] to-[var(--accent-secondary)] flex-shrink-0" />
+                <div>
+                  <p className="text-[var(--accent)] text-sm font-medium uppercase tracking-widest mb-2">Founder</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Leroy Ng
+                  </h3>
+                  <p className="text-[var(--text-secondary)] text-lg leading-relaxed">
+                    Educated in Singapore with a passion for AI since its early days,
+                    Leroy founded MakeItAI to bridge the gap between cutting-edge AI
+                    research and real-world business applications.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-24">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="mb-16"
@@ -146,16 +153,16 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
               Our <span className="text-gradient">Approach</span>
             </h2>
-            <p className="text-[#94A3B8] text-lg max-w-2xl">
+            <p className="text-[var(--text-secondary)] text-lg max-w-2xl leading-relaxed">
               We combine deep technical expertise with a pragmatic approach to
               delivering AI solutions that create real business value.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -166,14 +173,17 @@ export default function AboutPage() {
                   type: "spring",
                   stiffness: 100,
                   damping: 15,
-                  delay: index * 0.1,
+                  delay: index * 0.08,
                 }}
               >
-                <Card>
+                <Card className="h-full">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-5">
+                    <value.icon className="w-5 h-5 text-[var(--accent)]" />
+                  </div>
                   <h3 className="text-xl font-semibold text-white mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-[#94A3B8]">{value.description}</p>
+                  <p className="text-[var(--text-secondary)] leading-relaxed">{value.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -182,7 +192,7 @@ export default function AboutPage() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-24">
+      <section className="py-28 bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-16"
@@ -191,10 +201,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
               Technical <span className="text-gradient">Expertise</span>
             </h2>
-            <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+            <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto leading-relaxed">
               We leverage cutting-edge technologies to build robust, scalable AI
               systems.
             </p>
@@ -204,7 +214,7 @@ export default function AboutPage() {
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className="p-6 rounded-2xl bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)] text-center group hover:border-[rgba(0,240,255,0.3)] transition-colors"
+                className="p-7 rounded-2xl bg-[var(--surface-elevated)] border border-[var(--border)] text-center group hover:border-[var(--border-accent)] transition-all duration-400"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -214,14 +224,18 @@ export default function AboutPage() {
                   damping: 15,
                   delay: index * 0.05,
                 }}
+                whileHover={{ y: -4 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[rgba(0,240,255,0.1)] flex items-center justify-center mx-auto mb-4 group-hover:bg-[rgba(0,240,255,0.2)] transition-colors">
-                  <tech.icon className="w-6 h-6 text-[#00F0FF]" />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5 transition-colors duration-300"
+                  style={{ background: `${tech.color}12` }}
+                >
+                  <tech.icon className="w-6 h-6" style={{ color: tech.color }} />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-1">
+                <h3 className="text-lg font-semibold text-white mb-2">
                   {tech.name}
                 </h3>
-                <p className="text-[#64748B] text-sm">{tech.description}</p>
+                <p className="text-[var(--text-muted)] text-sm">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -229,49 +243,36 @@ export default function AboutPage() {
       </section>
 
       {/* Global Operations Section */}
-      <section className="py-24 bg-[#0A0A0A]">
+      <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 100, damping: 15 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
                 Engineered for{" "}
                 <span className="text-gradient">Global Scale</span>
               </h2>
-              <p className="text-[#94A3B8] text-lg mb-6">
+              <p className="text-[var(--text-secondary)] text-lg mb-8 leading-relaxed">
                 Based in Wyoming with infrastructure spanning five continents.
                 Our edge-optimized architecture ensures low-latency AI responses
                 for users worldwide.
               </p>
               <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#00F0FF]" />
-                  <span className="text-[#94A3B8]">
-                    Multi-region deployment for redundancy
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#00F0FF]" />
-                  <span className="text-[#94A3B8]">
-                    99.9% uptime SLA guaranteed
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#00F0FF]" />
-                  <span className="text-[#94A3B8]">
-                    GDPR and SOC 2 compliant infrastructure
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#00F0FF]" />
-                  <span className="text-[#94A3B8]">
-                    24/7 monitoring and incident response
-                  </span>
-                </li>
+                {[
+                  "Multi-region deployment for redundancy",
+                  "99.9% uptime SLA guaranteed",
+                  "GDPR and SOC 2 compliant infrastructure",
+                  "24/7 monitoring and incident response",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-4">
+                    <div className="glow-dot flex-shrink-0" />
+                    <span className="text-[var(--text-secondary)]">{item}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
 
@@ -287,15 +288,12 @@ export default function AboutPage() {
                 { label: "Uptime SLA", value: "99.9%" },
                 { label: "Avg Latency", value: "50ms" },
                 { label: "Data Centers", value: "12+" },
-              ].map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className="p-6 rounded-2xl bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)] text-center"
-                >
-                  <div className="text-3xl font-bold text-[#00F0FF] mb-1">
+              ].map((stat) => (
+                <div key={stat.label} className="stat-card">
+                  <div className="text-3xl font-bold text-[var(--accent)] mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-[#64748B] text-sm">{stat.label}</div>
+                  <div className="text-[var(--text-muted)] text-sm">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -304,8 +302,9 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 mesh-gradient opacity-20" />
+      <section className="py-28 relative">
+        <div className="absolute inset-0 mesh-gradient opacity-25" />
+        <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,10 +312,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
               Ready to <span className="text-gradient">Partner With Us?</span>
             </h2>
-            <p className="text-[#94A3B8] text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-[var(--text-secondary)] text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
               Let&apos;s discuss how MakeItAI can help you build intelligent AI
               systems that drive real business outcomes.
             </p>

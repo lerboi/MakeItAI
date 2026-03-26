@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MessageSquare, Workflow, Bot, Zap, Shield, Globe } from "lucide-react";
+import { MessageSquare, Workflow, Bot, Zap, Shield, Globe, ArrowRight } from "lucide-react";
 
 const services = [
   {
     icon: Bot,
     title: "AI Business Automation",
     description:
-      "Replace manual processes with intelligent AI automation. From document processing to approval workflows—reduce overhead and scale operations.",
+      "Replace manual processes with intelligent AI automation. From document processing to approval workflows — reduce overhead and scale operations.",
     span: "lg:col-span-2",
     featured: true,
     accentColor: "#A855F7",
@@ -23,7 +23,7 @@ const services = [
       "Autonomous agents that execute complex multi-step processes with decision-making capabilities.",
     span: "lg:row-span-2",
     featured: false,
-    accentColor: "#00F0FF",
+    accentColor: "#00D4FF",
   },
   {
     icon: MessageSquare,
@@ -65,7 +65,7 @@ const services = [
 
 export default function BentoServices() {
   return (
-    <section className="py-24 bg-[#0A0A0A]">
+    <section className="py-28 bg-[var(--surface)]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -75,10 +75,10 @@ export default function BentoServices() {
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
             Solutions <span className="text-gradient">Engineered for Scale</span>
           </h2>
-          <p className="text-[#94A3B8] text-lg max-w-2xl">
+          <p className="text-[var(--text-secondary)] text-lg max-w-2xl leading-relaxed">
             From intelligent chatbots to autonomous workflows, we build AI systems
             that deliver measurable business impact.
           </p>
@@ -90,15 +90,15 @@ export default function BentoServices() {
             <motion.div
               key={service.title}
               className={`
-                relative group p-6 rounded-2xl bg-[#0F0F0F] border border-[rgba(255,255,255,0.08)]
-                transition-all duration-300
+                relative group p-7 rounded-2xl
+                border border-[var(--border)]
+                transition-all duration-400
                 ${service.span}
-                ${service.featured ? "bg-gradient-to-br from-[#0F0F0F] to-[#110A1F]" : ""}
+                ${service.featured
+                  ? "bg-gradient-to-br from-[var(--surface-elevated)] to-[rgba(168,85,247,0.06)]"
+                  : "bg-[var(--surface-elevated)]"
+                }
               `}
-              style={{
-                "--hover-border": `rgba(${hexToRgb(service.accentColor)}, 0.3)`,
-                "--hover-glow": `rgba(${hexToRgb(service.accentColor)}, 0.08)`,
-              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -106,57 +106,49 @@ export default function BentoServices() {
                 type: "spring",
                 stiffness: 100,
                 damping: 15,
-                delay: index * 0.1,
+                delay: index * 0.08,
               }}
               whileHover={{
-                borderColor: `rgba(${hexToRgb(service.accentColor)}, 0.35)`,
-                boxShadow: `0 0 30px rgba(${hexToRgb(service.accentColor)}, 0.1)`,
+                borderColor: `rgba(${hexToRgb(service.accentColor)}, 0.3)`,
+                boxShadow: `0 20px 60px rgba(0,0,0,0.3), 0 0 30px rgba(${hexToRgb(service.accentColor)}, 0.08)`,
+                y: -4,
               }}
             >
+              {/* Top accent line on hover */}
+              <div
+                className="absolute top-0 left-6 right-6 h-[1px] opacity-0 group-hover:opacity-60 transition-opacity duration-400"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${service.accentColor}, transparent)`,
+                }}
+              />
+
               {/* Icon */}
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
                 style={
                   service.featured
-                    ? {
-                        background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})`,
-                      }
-                    : {
-                        backgroundColor: `rgba(${hexToRgb(service.accentColor)}, 0.12)`,
-                      }
+                    ? { background: `linear-gradient(135deg, ${service.gradientFrom}, ${service.gradientTo})` }
+                    : { backgroundColor: `rgba(${hexToRgb(service.accentColor)}, 0.1)` }
                 }
               >
                 <service.icon
                   className="w-6 h-6"
-                  style={{
-                    color: service.featured ? "#050505" : service.accentColor,
-                  }}
+                  style={{ color: service.featured ? "var(--base)" : service.accentColor }}
                 />
               </div>
 
               {/* Content */}
-              <h3
-                className="text-xl font-semibold text-white mb-2 transition-colors duration-200 group-hover:text-opacity-90"
-                style={{ "--hover-color": service.accentColor }}
-              >
+              <h3 className="text-xl font-semibold text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-[#94A3B8]">{service.description}</p>
-
-              {/* Hover Glow */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-                style={{
-                  background: `linear-gradient(135deg, rgba(${hexToRgb(service.accentColor)}, 0.05), transparent)`,
-                }}
-              />
+              <p className="text-[var(--text-secondary)] leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>
 
         {/* CTA */}
         <motion.div
-          className="mt-12 text-center"
+          className="mt-14 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -164,10 +156,10 @@ export default function BentoServices() {
         >
           <Link
             href="/solutions"
-            className="inline-flex items-center gap-2 text-[#00F0FF] hover:underline"
+            className="inline-flex items-center gap-2 text-[var(--accent)] hover:gap-3 transition-all duration-300 font-medium"
           >
             View all solutions
-            <span className="transition-transform">→</span>
+            <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>
@@ -179,5 +171,5 @@ function hexToRgb(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
-    : "0, 240, 255";
+    : "0, 212, 255";
 }

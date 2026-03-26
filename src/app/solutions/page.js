@@ -1,16 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Terminal, { CodeBlock } from "@/components/ui/Terminal";
 import Button from "@/components/ui/Button";
-import { MessageSquare, Workflow, Bot, ArrowRight, CheckCircle } from "lucide-react";
+import { MessageSquare, Workflow, Bot, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 
 const solutions = [
   {
     id: "automation",
     icon: Bot,
-    iconGradient: "linear-gradient(135deg, #A855F7, #7C3AED)",
     accentColor: "#A855F7",
     title: "AI Business Automation",
     subtitle: "Automate repetitive operations and scale with intelligent workflows",
@@ -55,8 +53,7 @@ console.log(result.status); // "approved" | "pending_review"`,
   {
     id: "workflows",
     icon: Workflow,
-    iconGradient: "linear-gradient(135deg, #00F0FF, #0080FF)",
-    accentColor: "#00F0FF",
+    accentColor: "#00D4FF",
     title: "Autonomous Agentic Workflows",
     subtitle: "AI agents that execute complex multi-step processes",
     description:
@@ -101,7 +98,6 @@ const result = await workflow.run({
   {
     id: "chatbots",
     icon: MessageSquare,
-    iconGradient: "linear-gradient(135deg, #10B981, #059669)",
     accentColor: "#10B981",
     title: "Long-Memory Chatbots",
     subtitle: "Customer service agents that remember every interaction",
@@ -142,8 +138,9 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen pt-24">
       {/* Header */}
-      <section className="py-16 relative">
-        <div className="absolute inset-0 mesh-gradient opacity-20" />
+      <section className="py-20 relative">
+        <div className="absolute inset-0 mesh-gradient opacity-30" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div
             className="max-w-3xl"
@@ -151,11 +148,15 @@ export default function SolutionsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="badge mb-8">
+              <Sparkles size={14} />
+              <span>Our Solutions</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 tracking-tight leading-[1.1]">
               AI Solutions{" "}
               <span className="text-gradient">Built for Enterprise</span>
             </h1>
-            <p className="text-[#94A3B8] text-xl">
+            <p className="text-[var(--text-secondary)] text-xl leading-relaxed">
               From intelligent chatbots to autonomous workflows, our solutions
               are engineered for scale, security, and measurable business impact.
             </p>
@@ -168,7 +169,7 @@ export default function SolutionsPage() {
         <section
           key={solution.id}
           id={solution.id}
-          className={`py-24 ${index % 2 === 1 ? "bg-[#0A0A0A]" : ""}`}
+          className={`py-28 ${index % 2 === 1 ? "bg-[var(--surface)]" : ""}`}
         >
           <div className="max-w-7xl mx-auto px-6">
             <div
@@ -186,29 +187,29 @@ export default function SolutionsPage() {
               >
                 <div
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                  style={{ background: solution.iconGradient }}
+                  style={{ background: `${solution.accentColor}18` }}
                 >
-                  <solution.icon className="w-7 h-7 text-[#050505]" />
+                  <solution.icon className="w-7 h-7" style={{ color: solution.accentColor }} />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                <h2 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">
                   {solution.title}
                 </h2>
-                <p className="text-lg mb-4" style={{ color: solution.accentColor }}>
+                <p className="text-lg mb-5 font-medium" style={{ color: solution.accentColor }}>
                   {solution.subtitle}
                 </p>
-                <p className="text-[#94A3B8] text-lg mb-8">
+                <p className="text-[var(--text-secondary)] text-lg mb-8 leading-relaxed">
                   {solution.description}
                 </p>
 
                 {/* Features List */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-10">
                   {solution.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
                       <CheckCircle
                         className="w-5 h-5 flex-shrink-0"
                         style={{ color: solution.accentColor }}
                       />
-                      <span className="text-[#94A3B8]">{feature}</span>
+                      <span className="text-[var(--text-secondary)]">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -242,8 +243,9 @@ export default function SolutionsPage() {
       ))}
 
       {/* CTA Section */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 mesh-gradient opacity-20" />
+      <section className="py-28 relative">
+        <div className="absolute inset-0 mesh-gradient opacity-25" />
+        <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -251,10 +253,10 @@ export default function SolutionsPage() {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight">
               Need a <span className="text-gradient">Custom Solution?</span>
             </h2>
-            <p className="text-[#94A3B8] text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-[var(--text-secondary)] text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
               Every business is unique. Let&apos;s discuss your specific requirements
               and design an AI solution tailored to your needs.
             </p>

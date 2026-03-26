@@ -15,9 +15,9 @@ export default function Terminal({ children, title = "terminal", className = "" 
         <div className="terminal-dot terminal-dot-red" />
         <div className="terminal-dot terminal-dot-yellow" />
         <div className="terminal-dot terminal-dot-green" />
-        <span className="ml-4 text-xs text-[#64748B]">{title}</span>
+        <span className="ml-4 text-xs text-[var(--text-muted)] font-mono">{title}</span>
       </div>
-      <div className="p-4 font-mono text-sm overflow-x-auto">
+      <div className="p-5 font-mono text-sm overflow-x-auto leading-relaxed">
         {children}
       </div>
     </motion.div>
@@ -27,15 +27,15 @@ export default function Terminal({ children, title = "terminal", className = "" 
 export function TerminalLine({ prompt = "$", children, className = "" }) {
   return (
     <div className={`flex gap-2 ${className}`}>
-      <span className="text-[#00F0FF]">{prompt}</span>
-      <span className="text-[#94A3B8]">{children}</span>
+      <span className="text-[var(--accent)]">{prompt}</span>
+      <span className="text-[var(--text-secondary)]">{children}</span>
     </div>
   );
 }
 
 export function TerminalOutput({ children, className = "" }) {
   return (
-    <div className={`text-[#64748B] pl-4 ${className}`}>
+    <div className={`text-[var(--text-muted)] pl-4 ${className}`}>
       {children}
     </div>
   );
@@ -43,7 +43,7 @@ export function TerminalOutput({ children, className = "" }) {
 
 export function CodeBlock({ code, language = "javascript" }) {
   return (
-    <pre className="text-[#94A3B8] whitespace-pre-wrap">
+    <pre className="text-[var(--text-secondary)] whitespace-pre-wrap">
       <code>{code}</code>
     </pre>
   );

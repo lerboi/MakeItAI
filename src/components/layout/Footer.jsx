@@ -33,9 +33,15 @@ export default function Footer() {
               Creating the perfect AI solution tailored for every industry.
               Engineered for enterprise scale, deployed globally.
             </p>
-            <p className="text-[#64748B] text-sm">
+            <p className="text-[#64748B] text-sm mb-2">
               MakeItAI LLC - Wyoming, USA
             </p>
+            <a
+              href="mailto:leroy.ng@makeitai.site"
+              className="text-[#64748B] text-sm hover:text-[#00F0FF] transition-colors"
+            >
+              leroy.ng@makeitai.site
+            </a>
           </div>
 
           {/* Solutions Links */}
